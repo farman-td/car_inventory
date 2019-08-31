@@ -1,0 +1,23 @@
+    
+    <div class="container mt-5">
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover table">
+            <thead>
+                <tr>
+                <th scope="col">Serial Name</th>
+                <th scope="col">Manufacturer Name</th>
+                <th scope="col">Model Name</th>
+                <th scope="col">Count</th>
+                <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let mo of modelList; let i = index">
+                    <th scope="row">{{ i+1 }}</th>
+                    <td>{{ mo.manufacturerName }}</td>
+                    <td>{{ mo.modelName }}</td>
+                    <td>{{ mo.totalCar }}</td>
+                    <td> <button class="btn btn-xs btn-outline-info" (click)="sellCar(mo)">sell a car</button> </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>

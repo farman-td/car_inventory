@@ -1,0 +1,53 @@
+    
+    <div class="container mt-5">
+        <form #f="ngForm" (ngSubmit)="save(f.value)">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Add Model</strong>
+                </div>
+                <div class="card-body">
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="name">Model Name</label>
+                                <input 
+                                    #name="ngModel" 
+                                    [(ngModel)]="model.name"
+                                    name="name" 
+                                    id="name" 
+                                    type="text" 
+                                    class="form-control"
+                                    required
+                                    placeholder="Enter model name">
+                                <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+                                    Model name is required
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleMaufacturerSelect">select Maufacturer</label>
+                                <select class="form-control" 
+                                    #manufacturerId="ngModel"
+                                    [(ngModel)]="model.manufacturerId"
+                                    name="manufacturerId"
+                                    id="exampleMaufacturerSelect"
+                                    required>
+                                    <option *ngFor="let man of manufacturerList" [value]="man.id">{{ man.name}}</option>
+                                </select>
+                                <div class="alert alert-danger" *ngIf="manufacturerId.touched && manufacturerId.invalid">
+                                    Please select manufacturer!!!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    <button type="submit" [disabled]="!f.form.valid" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- {{ manufacturerList | json }} -->
